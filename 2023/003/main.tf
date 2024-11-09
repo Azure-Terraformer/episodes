@@ -56,26 +56,14 @@ resource "azurerm_monitor_diagnostic_setting" "activity_logs" {
   storage_account_id         = data.azurerm_storage_account.monitor.id
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.monitor.id
 
-  log {
+  enabled_log {
     category_group = "audit"
-
-    retention_policy {
-      enabled = false
-    }
   }
-  log {
+  enabled_log {
     category_group = "allLogs"
-
-    retention_policy {
-      enabled = false
-    }
   }
   metric {
     category = "AllMetrics"
-
-    retention_policy {
-      enabled = false
-    }
   }
 
 }
